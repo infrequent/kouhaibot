@@ -92,6 +92,10 @@ lewd = [
   " S-SEMPAI!!! HNNNNNNGGGG!! S-ssem-mpai..."
 ]
 
+moderators = [
+	"Dillonwastaken, fknjosh, hbAlty, hbBeardman, hbCybrox, hbNuck, hbRyn, Jojovonjo, Lyonface, MeganeconJim"
+]
+
 last_time = 0
 
 class kouhai_bot(ch.RoomManager):
@@ -146,7 +150,7 @@ class kouhai_bot(ch.RoomManager):
 
       elif cmd == "mods":
         # modlist = " ".join(room.modnames + [room.ownername])
-        room.message("Current chat mods: Dillonwastaken, fknjosh, hbAlty, hbBeardman, hbCybrox, hbNuck, hbRyn, Jojovonjo, Lyonface, MeganeconJim")# + modlist)
+        room.message("Current chat mods:" + moderators)
 
       elif cmd == "users":
         userlist= " ".join(room.usernames)
@@ -193,7 +197,7 @@ class kouhai_bot(ch.RoomManager):
         room.message(" https://www.youtube.com/watch?v=TBfWKmRFTjM This song discribes you pretty accurately " + args + " .")
 
       elif cmd == "commands":
-        room.message("> /commands, /cookie, /weeaboo (arg), /rape (arg), /users, /tsundere (arg), /kill (arg), /notice, /yandere (arg), /true? (arg), /intro, /flip, /insult (arg), /baka, /lewd, /dance, /roulette, /scrub, /mods. <")
+        room.message("> /commands, /cookie, /weeaboo (arg), /rape (arg), /users, /tsundere (arg), /kill (arg), /notice, /yandere (arg), /true? (arg), /intro, /flip, /insult (arg), /baka, /lewd, /dance, /roulette, /scrub, /mods, /yt (arg), /google (arg), /hb (arg). <")
 
       elif cmd == "roulette":
         if randint(1, 100) < 25:
@@ -214,6 +218,27 @@ class kouhai_bot(ch.RoomManager):
       elif cmd == "rape":
         room.message("Come here " + args + " !")
         self.setTimeout(2, room.message, "*Rapes " + args + " .*")
+	  
+	  elif cmd == "yt": #youtube search
+		if args.isspace():
+			room.message("please enter in a search parameter.")
+		else:
+			args.replace (" ", "+")
+			room.message("http://www.googl.com/#btnI=I&q=site:youtube.com+" + args)
+	  
+	  elif cmd == "google": #google search
+		if args.isspace():
+			room.message("please enter in a search parameter.")
+		else:
+			args.replace (" ", "+")
+			room.message("http://www.googl.com/#btnI=I&q=" + args)
+			
+	  elif cmd == "hb": #Hummingbird search
+		if args.isspace():
+			room.message("please enter in a search parameter.")
+		else:
+			args.replace (" ", "%20")
+			room.message("http://hummingbird.me/search?query=" + args)
 
       else:
         room.message("I don't know that command!")
